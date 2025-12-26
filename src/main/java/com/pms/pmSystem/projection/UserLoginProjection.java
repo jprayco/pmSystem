@@ -1,6 +1,6 @@
 package com.pms.pmSystem.projection;
 
-public interface UserProjection {
+public interface UserLoginProjection {
     String getId();
     String getStatus();
     String getEmail();

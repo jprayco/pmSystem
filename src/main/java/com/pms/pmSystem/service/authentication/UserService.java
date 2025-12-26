@@ -12,7 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.pms.pmSystem.model.Users;
-import com.pms.pmSystem.projection.UserProjection;
+import com.pms.pmSystem.projection.UserLoginProjection;
 import com.pms.pmSystem.repository.UserRepo;
 
 @Service
@@ -26,7 +26,7 @@ public class UserService {
     @Autowired
     AuthenticationManager authenticationManager;
 
-    public List<UserProjection> getAllUser() {
+    public List<UserLoginProjection> getAllUser() {
         return repo.findAllProjectedBy();
     }
 
@@ -42,7 +42,7 @@ public class UserService {
             Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(users.getUsername(), users.getPassword()));
 
             if (authentication.isAuthenticated()) {
-                UserProjection userProjection = repo.findProjectedByUsername(users.getUsername());
+                UserLoginProjection userProjection = repo.findProjectedByUsername(users.getUsername());
                 
                 if (userProjection != null) {
                     Map<String, Object> claims = new HashMap<>();

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pms.pmSystem.projection.UserProjection;
+import com.pms.pmSystem.projection.UserLoginProjection;
 import com.pms.pmSystem.service.authentication.UserService;
 
 
@@ -16,7 +16,7 @@ public class UserController {
     UserService service;
 
     @GetMapping("/users")
-    public List<UserProjection> getUser() {
+    public List<UserLoginProjection> getUser() {
         return service.getAllUser();
     }
     
