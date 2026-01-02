@@ -7,11 +7,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.pms.pmSystem.model.WorkBook;
+import com.pms.pmSystem.model.ProjTeamRoster;
 
 @Repository
-public interface WorkbookRepo extends JpaRepository<WorkBook, Integer> {
-
-    @Query("SELECT wb FROM WorkBook wb WHERE wb.project.id = :projectId")
-    List<WorkBook> findByProjectId(@Param("projectId") int projectId);
+public interface ProjTeamRosterRepo extends JpaRepository<ProjTeamRoster, Integer>{
+    @Query("SELECT ptr FROM ProjTeamRoster ptr WHERE ptr.project.id = :projectId")
+    List<ProjTeamRoster> findByProjectId(@Param("projectId") int projectId);
 }
