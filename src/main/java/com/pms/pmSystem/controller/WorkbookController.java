@@ -19,9 +19,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.pms.pmSystem.dto.ProjectAssignedDTO;
 import com.pms.pmSystem.dto.WorkbookCreateRequest;
-import com.pms.pmSystem.model.ProjectAssigned;
 import com.pms.pmSystem.model.Projects;
 import com.pms.pmSystem.model.WorkBook;
 import com.pms.pmSystem.service.ProjectService;

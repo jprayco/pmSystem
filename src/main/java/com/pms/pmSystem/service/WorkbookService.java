@@ -12,14 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.pms.pmSystem.model.ProjectAssigned;
-import com.pms.pmSystem.model.Projects;
 import com.pms.pmSystem.model.WorkBook;
 import com.pms.pmSystem.model.WorkbookAttachment;
 import com.pms.pmSystem.repository.WorkbookAttachmentRepo;
 import com.pms.pmSystem.repository.WorkbookRepo;
-
-import jakarta.validation.Valid;
 
 @Service
 public class WorkbookService {
