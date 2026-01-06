@@ -73,7 +73,7 @@ public class ProjTaskCommentController {
 
             List<ProjTaskCommentDTO> commentDTOs = comments.stream().map(comment -> {
                 Integer commentTaskId = comment.getTask_id() != null ? comment.getTask_id().getId() : null;
-
+                System.out.print("task id: "+commentTaskId);
                 Integer createdById = comment.getCreated_by() != null ? comment.getCreated_by().getId() : null;
                 String createdByFullName = comment.getCreated_by() != null
                         ? (comment.getCreated_by().getFname() + " " + comment.getCreated_by().getLname()) : null;
