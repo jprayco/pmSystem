@@ -93,6 +93,26 @@ public class ProjTaskController {
                 }
             }
 
+            // Convert createdById to Users object for created_by field
+            if (request.getCreatedById() != null) {
+                Optional<Users> createdByUserOptional = userRepo.findById(request.getCreatedById());
+                if (createdByUserOptional.isPresent()) {
+                    task.setCreated_by(createdByUserOptional.get());
+                } else {
+                    // Handle case where created by user is not found
+                    System.err.println("Created by user not found with ID: " + request.getCreatedById());
+                    Map<String, Object> errorResponse = new HashMap<>();
+                    errorResponse.put("statusCode", HttpStatus.BAD_REQUEST.value());
+                    errorResponse.put("message", "Created by user not found with id: " + request.getCreatedById());
+                    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+                }
+            } else {
+                Map<String, Object> errorResponse = new HashMap<>();
+                errorResponse.put("statusCode", HttpStatus.BAD_REQUEST.value());
+                errorResponse.put("message", "Created By user ID is required");
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+            }
+
             task.setStatus(request.getStatus());
             task.setPriority(request.getPriority());
 
@@ -101,6 +121,7 @@ public class ProjTaskController {
             // Convert to TaskResponseDTO with only IDs instead of full objects
             Integer assignedUserId = savedTask.getTask_assignedUsers() != null ? savedTask.getTask_assignedUsers().getId() : null;
             Integer projectId = savedTask.getProject() != null ? savedTask.getProject().getId() : null;
+            Integer createdById = savedTask.getCreated_by() != null ? savedTask.getCreated_by().getId() : null;
 
             TaskResponseDTO responseDTO = new TaskResponseDTO(
                     savedTask.getId(),
@@ -116,7 +137,8 @@ public class ProjTaskController {
                     savedTask.getDependencies(),
                     assignedUserId,
                     savedTask.getStatus(),
-                    savedTask.getPriority()
+                    savedTask.getPriority(),
+                    createdById
             );
 
             Map<String, Object> response = new HashMap<>();
@@ -141,6 +163,7 @@ public class ProjTaskController {
             List<TaskResponseDTO> taskDTOs = tasks.stream().map(task -> {
                 Integer assignedUserId = task.getTask_assignedUsers() != null ? task.getTask_assignedUsers().getId() : null;
                 Integer projectIdFromTask = task.getProject() != null ? task.getProject().getId() : null;
+                Integer createdById = task.getCreated_by() != null ? task.getCreated_by().getId() : null;
 
                 return new TaskResponseDTO(
                         task.getId(),
@@ -156,7 +179,8 @@ public class ProjTaskController {
                         task.getDependencies(),
                         assignedUserId,
                         task.getStatus(),
-                        task.getPriority()
+                        task.getPriority(),
+                        createdById
                 );
             }).collect(Collectors.toList());
 
@@ -232,11 +256,26 @@ public class ProjTaskController {
                 existingTask.setTask_assignedUsers(null);
             }
 
+            // Update created by user if createdById is provided
+            if (request.getCreatedById() != null) {
+                Optional<Users> createdByUserOptional = userRepo.findById(request.getCreatedById());
+                if (createdByUserOptional.isPresent()) {
+                    existingTask.setCreated_by(createdByUserOptional.get());
+                } else {
+                    // Handle case where user is not found
+                    System.err.println("Created by user not found with ID: " + request.getCreatedById());
+                    existingTask.setCreated_by(null);
+                }
+            } else {
+                existingTask.setCreated_by(null);
+            }
+
             ProjTask updatedTask = service.update(id, existingTask);
 
             // Convert to TaskResponseDTO with only IDs instead of full objects
             Integer assignedUserId = updatedTask.getTask_assignedUsers() != null ? updatedTask.getTask_assignedUsers().getId() : null;
             Integer projectId = updatedTask.getProject() != null ? updatedTask.getProject().getId() : null;
+            Integer createdById = updatedTask.getCreated_by() != null ? updatedTask.getCreated_by().getId() : null;
 
             TaskResponseDTO responseDTO = new TaskResponseDTO(
                     updatedTask.getId(),
@@ -252,7 +291,8 @@ public class ProjTaskController {
                     updatedTask.getDependencies(),
                     assignedUserId,
                     updatedTask.getStatus(),
-                    updatedTask.getPriority()
+                    updatedTask.getPriority(),
+                    createdById
             );
 
             Map<String, Object> response = new HashMap<>();

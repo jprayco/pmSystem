@@ -38,4 +38,7 @@ public class TaskCreateRequest {
     private String status;
 
     private String priority;
+
+    @NotNull(message = "Created By is required!")
+    private Integer createdById;
 }

@@ -7,8 +7,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -55,4 +55,9 @@ public class ProjTask {
     private String status;
 
     private String priority;
+
+    @NotNull(message = "Task Assigned User is required")
+    @OneToOne
+    @JoinColumn(name = "created_by", referencedColumnName = "id")
+    private Users created_by;
 }

@@ -37,6 +37,10 @@ public class UserService {
         return repo.save(users);
     }
 
+    public Users getUserById(int id){
+        return repo.findById(id).orElse(new Users());
+    }
+
     public String verify(Users users) {
         try {
             Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(users.getUsername(), users.getPassword()));
@@ -62,4 +66,5 @@ public class UserService {
         }
 
     }
+
 }

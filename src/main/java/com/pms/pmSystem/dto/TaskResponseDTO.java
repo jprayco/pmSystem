@@ -3,6 +3,7 @@ package com.pms.pmSystem.dto;
 import java.util.Date;
 
 public class TaskResponseDTO {
+
     private Integer id;
     private Integer projectId;
     private String stage;
@@ -17,14 +18,15 @@ public class TaskResponseDTO {
     private Integer task_assignedUsersId;
     private String status;
     private String priority;
+    private Integer createdById;
 
     public TaskResponseDTO() {
     }
 
     public TaskResponseDTO(Integer id, Integer projectId, String stage, String name, String description,
-                          Integer completion_days, Date start_date, Date end_date, Date completion_target_date,
-                          Date completion_actual_date, String dependencies, Integer task_assignedUsersId,
-                          String status, String priority) {
+            Integer completion_days, Date start_date, Date end_date, Date completion_target_date,
+            Date completion_actual_date, String dependencies, Integer task_assignedUsersId,
+            String status, String priority, Integer createdById) {
         this.id = id;
         this.projectId = projectId;
         this.stage = stage;
@@ -39,48 +41,127 @@ public class TaskResponseDTO {
         this.task_assignedUsersId = task_assignedUsersId;
         this.status = status;
         this.priority = priority;
+        this.createdById = createdById;
     }
 
     // Getters and setters
-    public Integer getId() { return id; }
-    public void setId(Integer id) { this.id = id; }
+    public Integer getId() {
+        return id;
+    }
 
-    public Integer getProjectId() { return projectId; }
-    public void setProjectId(Integer projectId) { this.projectId = projectId; }
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-    public String getStage() { return stage; }
-    public void setStage(String stage) { this.stage = stage; }
+    public Integer getProjectId() {
+        return projectId;
+    }
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public void setProjectId(Integer projectId) {
+        this.projectId = projectId;
+    }
 
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
+    public String getStage() {
+        return stage;
+    }
 
-    public Integer getCompletion_days() { return completion_days; }
-    public void setCompletion_days(Integer completion_days) { this.completion_days = completion_days; }
+    public void setStage(String stage) {
+        this.stage = stage;
+    }
 
-    public Date getStart_date() { return start_date; }
-    public void setStart_date(Date start_date) { this.start_date = start_date; }
+    public String getName() {
+        return name;
+    }
 
-    public Date getEnd_date() { return end_date; }
-    public void setEnd_date(Date end_date) { this.end_date = end_date; }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public Date getCompletion_target_date() { return completion_target_date; }
-    public void setCompletion_target_date(Date completion_target_date) { this.completion_target_date = completion_target_date; }
+    public String getDescription() {
+        return description;
+    }
 
-    public Date getCompletion_actual_date() { return completion_actual_date; }
-    public void setCompletion_actual_date(Date completion_actual_date) { this.completion_actual_date = completion_actual_date; }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-    public String getDependencies() { return dependencies; }
-    public void setDependencies(String dependencies) { this.dependencies = dependencies; }
+    public Integer getCompletion_days() {
+        return completion_days;
+    }
 
-    public Integer getTask_assignedUsersId() { return task_assignedUsersId; }
-    public void setTask_assignedUsersId(Integer task_assignedUsersId) { this.task_assignedUsersId = task_assignedUsersId; }
+    public void setCompletion_days(Integer completion_days) {
+        this.completion_days = completion_days;
+    }
 
-    public String getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
+    public Date getStart_date() {
+        return start_date;
+    }
 
-    public String getPriority() { return priority; }
-    public void setPriority(String priority) { this.priority = priority; }
+    public void setStart_date(Date start_date) {
+        this.start_date = start_date;
+    }
+
+    public Date getEnd_date() {
+        return end_date;
+    }
+
+    public void setEnd_date(Date end_date) {
+        this.end_date = end_date;
+    }
+
+    public Date getCompletion_target_date() {
+        return completion_target_date;
+    }
+
+    public void setCompletion_target_date(Date completion_target_date) {
+        this.completion_target_date = completion_target_date;
+    }
+
+    public Date getCompletion_actual_date() {
+        return completion_actual_date;
+    }
+
+    public void setCompletion_actual_date(Date completion_actual_date) {
+        this.completion_actual_date = completion_actual_date;
+    }
+
+    public String getDependencies() {
+        return dependencies;
+    }
+
+    public void setDependencies(String dependencies) {
+        this.dependencies = dependencies;
+    }
+
+    public Integer getTask_assignedUsersId() {
+        return task_assignedUsersId;
+    }
+
+    public void setTask_assignedUsersId(Integer task_assignedUsersId) {
+        this.task_assignedUsersId = task_assignedUsersId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getPriority() {
+        return priority;
+    }
+
+    public void setPriority(String priority) {
+        this.priority = priority;
+    }
+
+    public Integer getCreatedById() {
+        return createdById;
+    }
+
+    public void setCreatedById(Integer createdById) {
+        this.createdById = createdById;
+    }
 }

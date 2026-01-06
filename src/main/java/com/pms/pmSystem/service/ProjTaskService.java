@@ -92,6 +92,7 @@ public class ProjTaskService {
         existingTask.setTask_assignedUsers(updated_task.getTask_assignedUsers());
         existingTask.setStatus(updated_task.getStatus());
         existingTask.setPriority(updated_task.getPriority());
+        existingTask.setCreated_by(updated_task.getCreated_by());
 
         return repo.save(existingTask);
     }
