@@ -47,7 +47,7 @@ public class ProjectService {
         existingProject.setProj_training_date(updatedProject.getProj_training_date());
         existingProject.setProj_knowlegde_trans_date(updatedProject.getProj_knowlegde_trans_date());
         existingProject.setProj_cocso_date(updatedProject.getProj_cocso_date());
-        existingProject.setProj_overall_completion(updatedProject.getProj_overall_completion());
+        //existingProject.setProj_overall_completion(updatedProject.getProj_overall_completion());
 
         return repo.save(existingProject);
     }
